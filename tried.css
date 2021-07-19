@@ -1,1315 +1,555 @@
-/*Setting the body page*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+body {
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 10px;
+ 
 
+}
 
-body{
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 5px;
+}
+
+/* REUSABLE STYLES */
+.airbnb-container {
+  padding: 50px 5px;
+}
+
+/*
+ * Check out how the transition property and the :hover pseudo class work together
+ * You get a nice smooth fade-in color switch when hovering over the element
+ */
+.airbnb-button {
+  background-color: #ff5358;
+  border-bottom: 2px solid #e00007;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin: 15px auto;
+  text-align: center;
+  transition: 0.4s ease-in-out;
+  width: 250px;
+}
+
+@media (max-width: 550px) {
+  .airbnb-button{
     
-    height: auto;
-    margin: auto;
-    box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
-    animation-duration: 3s;
-    transition-duration: 3s;
-    animation: h;
-    animation-fill-mode: forwards;
-    animation-name: concernant;
-    opacity: 0.9;
-    width : auto;
-    color: whitesmoke;
-   
+    width:60%;
+    font-size: 0.6rem;
 
-}
-
-html{
-    scroll-behavior: smooth;
+  }
+  
 }
 
 
-#media i{
-    
-    color: #d9d9d9;
-    text-align: center;
-    margin-left: -40%;
-    margin: 16px;
-    margin-top: -110px;
+.airbnb-button:hover {
+  background-color: #e00007;
+}
 
+.airbnb-button-text {
+  padding: 10px;
+}
+
+@media (min-width: 550px) {
+  .airbnb-button-text {
+    padding:5px;
+  }
+}
+
+/*
+ * To make the image darker, we have to think about the page in three dimensions
+ * We haven't talked about this yet but the position property is very powerful
+ * The idea is that we are going to position a dark mask above our image
+ * We position this pseudo class before the image so that it sits on top
+ * It's given a slightly transparent background using rgba colors
+ */
+
+.image-mask-darken {
+  position: relative;
+}
+
+.image-mask-darken:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  content: "";
+}
+
+/* HEADER */
+.airbnb-header {
+  align-items: center;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+}
+
+@media (max-width:600px){
+  .airbnb-header{
+      
+   display:flex;
+    height:auto;
+    flex-flow: column wrap;
+
+  }
+}
+
+.airbnb-logo-container {
+  width: 100%;
+}
+
+.airbnb-nav {
+  width: 350px;
+}
+
+@media (max-width:600px){
+  .airbnb-nav{
+    flex-flow: column wrap;
+align-content: flex-start;
+    width:100%;
+
+  }
+}
+
+.airbnb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 10px;
+}
+
+.airbnb-logo {
+  padding: 10px 30px;
+  width: 100px;
+}
+
+.airbnb-nav-element {
+  cursor: pointer;
+  padding: 10px 30px;
+}
+
+/*
+ * Check out the use of this pseudo class to get my spacing just right
+ * This works because in my HTML, there are two .airbnb-nav-element divs right next to each other
+ */
+.airbnb-nav-element:last-child {
+  padding-left: 0;
+}
+sub{
+  color: #e00007;
+  font-size: 20px;
+}
+/* HERO */
+.airbnb-main-photo {
+  align-items: center;
+  background-image: url(let9.jpg);
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 550px;
+  margin-right: 30px;
+  width: 100%;
+  marginn-left: -7px;
+}
+
+/*
+ * To get the text to appear above the faded background, we need to position it absolutely
+ * This pops it out above the background
+ */
+.airbnb-intro-content {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 400px;
+}
+
+.airbnb-intro-title {
+  font-size: 64px;
+}
+
+.airbnb-intro-subtitle {
+  font-size: 16px;
+}
+
+/* Middle part of page */
+
+/**
+ * Notice I'm listing the flex-direction: column; BEFORE the media query
+ * This is a mobile-first responsive style
+ * You declare as many of the property:value pairs as you need
+ * Then you reset the ones you need to modify per screen
+ * In our case we want to flip between a single column on mobile, row of items on desktop
+ * This is a super familiar pattern in CSS, very common and easy with flexbox
+ */
+.airbnb-middle {
+  align-items: center;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
 
-#media {
-    text-align: center;
-    margin-left: -40%;
+.airbnb-middle-box {
+  border: 1px solid #dbdbdb;
+  width: 96%;
 }
 
-/*Setting the background of the header page*/
-#section1{
-    
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), no-repeat center center/cover url(let4.jpg);
-    animation : hello 10s;
-    margin-top: 10px 0;
-    background-color: black;
+@media (min-width: 550px) {
+  .airbnb-middle-box {
+    width: 48%;
+  }
 }
 
-.qwerty{
-    
-    width: 100%;
-    height: 600px;
-    background-color: black;
-    margin-left: 30%;
-}
-
-.text-3{
-    color: rgb(230, 230, 230);
-    padding-top: 150px;
-    text-align: center;
-    font-size: 25px;
-    
-}
-.typing span{
-    color: #d9d9d9;
-    font-size: 20px;
-    text-align: center;
-    justify-self: unset;
-    justify-content: center;
-    
+.airbnb-middle-content-container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 75px;
+  padding: 10px;
+  justify-content: space-around;
 }
 
 
-/*Setting the header page*/
-.image{
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), center center/cover url(let2.jpg);
-    width: 92%;
-    height: 550px;
-    margin: 50px;
-    margin-right: -20px;
-    margin-right: -813px;
-    height: 90px;   
+
+.airbnb-middle-icon {
+  padding-right: 12px;
 }
 
-.hello h1{
-    text-align: center;
-    margin-top: 20%;
-    font-size: 30px;
-
-}
-body::after{
-    content: "";
-    clear: both;
-    display: table;
-
-}
-.close{
-    display: none;
-}
-.head{
-    padding-top: 20px;
-}
-/*Setting the scroll down button*/
-html{
-    scroll-behavior: smooth;
+.airbnb-middle-titles {
+  background-color: #edefed;
+  font-size: 14px;
+  padding: 12px 18px;
 }
 
-/*Setting the Header  page*/
-.reveal-visible{
-    opacity:1;
-    transform: translateY(0);
-    transition: 1s;
-
+.airbnb-middle-content {
+  line-height: 1.4;
+  padding-right: 12px;
 }
 
-.header h2{
-    font-size: 35px;
+/* NEIGHBORHOODS */
+.airbnb-neighborhood-container {
+  padding: 50px 5px;
 }
 
 
-/*make the assistance button to scroll-down*/
-#section2{
-    scroll-behavior: smooth;
-    scroll-margin-inline-end: 23px;
+
+.airbnb-neighborhood-title {
+  font-size: 32px;
+  text-align: center;
 }
 
-/*Setting the background of the header page*/
-.section-top{
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 10px 0;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), center center/cover url(let3.jpg);
+.airbnb-neighborhood-subtitle {
+  font-size: 14px;
+  padding: 10px 0;
+  text-align: center;
 }
 
-/* working section */
-.work{
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    position: relative;
+.airbnb-three-neighborhood-container {
+  display: flex;
+}
+@media (max-width: 550px) {
+  .airbnb-three-neighborhood-container {
+  flex-direction:column;
+    align-items:center;
+    width:100%;
+  }}
 
-    animation : hello 10s;
-    margin-top: 10px 0;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), center center/cover url(let8.jpg);
+
+.airbnb-indiv-neighborhood-container {
+  margin: 1%;
+  width: 100%;
+}
+
+/* Note that here we are doing nested flex boxes */
+.airbnb-indiv-neighborhood-header {
+  align-items: center;
+  background-position: center center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 300px; /* approximate estimate */
+  justify-content: space-around;
+  text-align: center;
 }
 
 
-.paragraph{
-    font-size: 20px;
+.fitzroy  { background-image: url('let11.jpg'); }
+.st-kilda { background-image: url('let10.jpg'); }
+.cbd      { background-image: url('let6.jpg');}
+
+/* Again, to achieve darkened image effect, we need to move interior content above the background image 
+.airbnb-indiv-neighborhood-header-content {
+  position: absolute;
 }
+
+.airbnb-indiv-neighborhood-title {
+  font-size: 24px;
+}
+
+.airbnb-indiv-neighborhood-details {
+  background-color: #efefef;
+  border: 1px solid #dbdbdb;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 50px; /* makes the detail boxes look uniform */
+  padding: 20px;
+}
+
+.airbnb-footer {
+  align-items: center;
+  background-color: #2B2D2E;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: center;
+}
+
+/* Styling horizontal rules requires you give it some height */
+hr {
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 40px;
+  width: 95%;
+}
+
+  
+/*Setting the navigation menu*/
+
 
 
 
 /*Setting the navigation menu*/
 nav ul{
-    text-align: center;
-    letter-spacing: 2px;
-    word-spacing: 50px;
-    align-content: space-between;
-    background-color: rgb(0, 0, 0);
-    margin-top: -60px;
-   
-    
-    
+  text-align: center;
+  align-content: space-between;
 }
 
 .position{
-    margin-top: -76px;
+  margin-top: -29px;
+  font-size: 16px;
+  margin-left:75%;
+ 
 }
 .barre a{
-    margin-top: -40px;
+  margin-top: -40px;
+  margin-left: 15px;
+ 
 }
 
 nav a{
-    margin-left: 10%;
+  margin-left: 10%;
+  padding-top: 1j0px;
 }
 nav ul a{
-    position: relative;
-    color: whitesmoke;
-    align-content: space-between;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 20px;
-    
+  position: relative;
+  color: crimson;
+  align-content: space-between;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 40px;
+  paddinng-top: 30px;
+  position: sticky;
+  
 }
-nav a:hobver{
-    
-    background: rgb(255, 255, 255);
-    width: 100px;
-    color: whitesmoke;
+nav a:hovner{
+  
+  background: hsl(0, 0%, 100%);
+  width: 100px;
+  color: whitesmoke;
 }
 
 
-
-.section-top h1{
-    font-size: 30px;
-    letter-spacing: 1px;
-    text-align: center;
-
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #d9d9d9;
-}
-@keyframes ABT {
-    0%   {color:rgb(82, 6, 6); left:0px; top:0px;}
-    25%  {color:rgb(175, 175, 104); left:200px; top:0px;}
-    50%  {color:rgb(143, 0, 0); left:200px; top:200px;}
-    75%  {color:rgb(109, 67, 67); left:0px; top:200px;}
-    100% {color:rgb(39, 63, 65); left:0px; top:0px;}
-
-}
-.header h1{
-   
-    margin-top: 15px;
-    font-size: 25px;
-   
-
-}
 header{
-   
-    width: 100%;
-    background-color: black;
-   position: sticky;
-    z-index: 1000;
-   margin-top: -60px;
-   height: 80px;
-   top: 0%;
-   border-bottom: 1px solid rgb(99, 99, 99);
  
+  width: 100%;
+ 
+
+ marngin-top: -60px;
+ height: 60px;
+ top: 0%;
+
 
 }
 
 header a{
-    text-decoration: none;
-    transition-property: background;
-    animation-duration: 3s;
-    transition-duration: 5s;
-    animation: h;
-    animation-fill-mode: forwards;
-    animation-name: concernant;
-    text-align: center;
-    
+  text-decoration: none;
+  transition-property: background;
+  animation-duration: 3s;
+  transition-duration: 5s;
+  animation: h;
+  animation-fill-mode: forwards;
+  animation-name: concernant;
+  text-align: center;
+  
 
 }
 
 
 header a:hover{
-    color: rgb(58, 16, 16);
+  color: rgb(58, 16, 16);
 }
 /*Mobile Menu*/
 .close, .open{
-    display: none;
-}
-/*donation button*/
-.donate{
-    border: 1px solid whitesmoke;
-    border-radius: 14px;
-    color: whitesmoke;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 30px;
-    padding-left: 20px;
-    margin-top: -30px;
-    float: right;
-    margin-right: 20px;
-    background: black;
-    transition-property: background;
-    transition-duration: 2s,3s;
-    transition-timing-function: ease-out;
-    margin-right: 50px;
-    width: 75px;
-    
-}
-
-.donate:hover{
-    background-color: rgb(31, 7, 7);
-    color: whitesmoke;
-    
-
-}
-
-
-.bar h2{
-    font-size: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-left: 10px;
-    animation-name: ABT;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate; 
-}
-
-.button{
-    color: whitesmoke;
-    padding-bottom: 6px;
-    padding-right: 40px;
-    padding-left: 25px;
-    text-align: center;
-    font-size: 50px;
+  display: none;
 }
 
 .togle{
-    display: none;
-}
-
-.click button{
-    text-align: center;
-    width: 100px;
-    height : 30px; 
-}
-
-.click{
-    text-align: center;
-    padding-top: 15px;
-    
-}
-
-/*Social media buttons*/
-.section-top li{
-    list-style: none;
-    margin: 50px 20px;
-    font-size: 30px;
-    float: right;
-    margin-top: 150px;
-}
-
-#yoh{
-    display: flex;
-   
-}
-
-
-.bar {
-    color: whitesmoke;
-    font-size: 13px;
-    padding-top: 25px;
-    text-decoration: none;
-    font-family:sans-serif;
-    margin: 50px;
-    animation-name: ABT;  
+  display: none;
 }
 
 header nav.active{
-    right: 0;
-}
-
-.copy i{
-    color: whitesmoke;
-     
-}
-.right{
-    text-align: center;
-    
-}
-.right i{
-    color: whitesmoke;
-    
-    font-size: 20px;
-    margin-top: 20px;
-    
-}
-
-.copy{
-    height: 56px;
-    width: 100%;
-    border-bottom: 1px solid rgb(77, 75, 75);
-    border: 1px solid rgb(100, 100, 100);
-   
-   
-    
-   
-}
-
-.azert{
-    width: 100%;
-   
-   margin-top: -20px;
-    color: rgb(0, 0, 0);
-    animation : hello 10s;
-    font-size: 30px;
-  margin-left: 30px;
-   margin-bottom: 10px;
-   background-color: white;
-
-}
-.client{
-    width: 100%;
-  
-    
-    color: rgb(0, 0, 0);
-    animation : hello 10s;
-    padding-top: 80px;
-  
-   margin-bottom: 20px;
-   padding-bottom: 40px;
-   margin-top: -70px;
-    
-}
-
-.dev{
-    width: 100%;
-  
-    
-    color: rgb(0, 0, 0);
-    animation : hello 10s;
-   padding-top: 10px;
-  
-   margin-bottom: 10px;
-    
-}
-.web h1{
-    font-size: 35px;
-    float: left;
-    margin-top: -5px;
-    padding-left: 20px 
-   
-}
-
-.web{
-   
-    width: 100%;
-    
-    justify-content: center;
-   
-    text-align: center;
+  right: 0;
+} 
+ 
+.carre button{
+  margin-top: 20px;
+}   
 
 
-    margin-left: 20px;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    border-radius: 8px;
-    overflow: hidden;
-   margin: 50px;
-    
-    backdrop-filter: blur(20px);
-   
-    position: relative;
-    z-index: 999;
-   
-    padding-bottom: 10px;
-    margin-bottom: 0px;
-
-}
-
-.web p{
-    text-align: justify;
-    
-    font-size: 17px;
-    padding-right: 27%;
-    margin-left: 20px;
-   
-   
-}
-
-#web i{
-    text-align: center;
-    font-size: 22px;
-    padding-top: 30px;
-    opacity: 0;
-}
-
-#web button{
-    width: 140px;
-    height: 40px;
-    background-color: black;
-    cursor: pointer;
-    color: whitesmoke;
-    border: 1px solid whitesmoke;
-    float: left;
-    margin-top: 10px;
-    margin-left: 25px;
-    margin-bottom: 20px;
-    transition-property: background;
-    transition-duration: 1s;
-    animation: q;
-    animation-duration: 2s;
-
-}
-
-#web button:hover{
-    background: rgb(56, 5, 5);
-}
-
-.picture1{
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 10px 0;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), center center/cover url(let17.jfif);
-}
-
-.picture{
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 10px 0;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), center center/cover url(let10.jpg);
-}
-
-
-.pro{
-   
-   
-    margin-left: 30px;
-    font-size: 30px;
-    margin-top: 30px;
-    padding-top: 45px;
-    
-}
-.believe{
-    font-size: 19px;
-   margin-top: -10px;
-   margin-left: 20px;
-}
-
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
-
-
-
-
-
-
-
-
-.dis{
-    display: flex;
-    justify-content: center;
-    margin-left: 9%;
-}
-
-
+/* ghghg */
 @media screen and (min-width:220px) and (max-width:1100px){
-    .web h1{
-        font-size: 27px;
-        margin-left: 3px;
-    }
 
-    .pr{
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: -5%;
+      header{
+        width: 100%;
+         margimn-top: -60px;
+         height: 50px;
+         top: 0%;
+      }
+
+  
+ 
+  
+      .close{
+          font-size: 30px;
+          display: block;
+      }
+  
+   
+  
+  
+
+  
+      header nav ul{
+          display: block;
+      }
+  
+      #phone{
+          font-size: 30px;
+          cursor: pointer;
+          transition: all .6s;
+       
+          display: block;
+         
+          color: crimson;   
+      }
+  
+      #close{
         
-    }
-    #blue{
-    background-color: blueviolet;
-    color: rgb(255, 255, 255);
-    height: 27px;
-    width: 16%;
-    padding-top: 10px;
-    padding-left: 10px;
-    font-size: 30px;
-    padding-bottom: 10px;
-    font-weight: normal;
-    text-align: center;
-   justify-content: center;
-   }
-   #black{
-    background-color: blueviolet;
-    color: rgb(255, 255, 255);
-    height: 27px;
-    width: 16%;
-    padding-top: 10px;
-    padding-left: 10px;
-    font-size: 30px;
-    padding-bottom: 10px;
-    font-weight: normal;
-    text-align: center;
-   justify-content: center;
-   margin-left: -14%;
+          text-align: center;
+      }
+  
+      .bar{
+          text-align: center;
+          margin-left: -8%;
+          
+          
+      }
+  
+      .open{
+          display: block;
+          justify-content: center;
+     
+          opacity: 9;
+          
+      }
+  
+      #phone i{
+          padding-top: 10px;
+         margin-left: 86%;
+         display: block;
+        
+      
+      }
+  
+      .barre{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          height: 100%;
+          width: 0px;
+         background-color:#2B2D2E;
+          z-index: 1;
+          padding-top: 130px;
+          overflow-x: hidden;
+          transition: all .5s; 
+          text-align: center;
+          
+      }
+  
+     
+     
+  
+  
+     
+  
+      .header p{
+        
+        margin-bottom: -20px;
+          float: left;
+          margin-top: -15px;
+          padding-right: 10px;
+          padding-top: 20px;
+          margin-left: 10%;
+          font-size: 25px;
+          font-family: GillSans,Gill Sans MT,Calibri,sans-serif;
+      }
+  
+      .header{
+        
+          margin-top: 10px;
+         
+      }
+  
+      .barre a{
+          padding: 35px;
+          text-decoration: none;
+          font-size: 20px;
+          color: rgb(255, 175, 175);
+          display: block;
+         justify-content: center;
+          display: block;
+          align-items: center;
+          margin-left: -40%;
+          margin: -24px;
+      }
+
+      .position{
+        text-align: center;
+        margin-left: -14%;
+        color: crimson;
+      }
+  
+     
+      
+  
   }
-
-#yes{
-    margin-left: -14%;
-}
-.lorem{
-    font-size: px;
-    color: rgb(255, 255, 255);
-}
-.create{
-    color: rgb(255, 255, 255);
-    margin-top: -20px;
-    font-size: 15px;
-    background-color: rgb(8, 8, 8);
-   
-    
-}
-
-.blue img{
-    margin-top: 20px;
-    width: 300px;
-    height: 200px;
-    
-}
-.blue{
-
-    display: block;
-    margin-left: -10%;
-
-}
-
-#last {
-    font-size: 25px;
-    margin-top: -76px;
-    
-}
-#bla{
-margin-left: 15%;
-}
-#bl{
-    margin-top: -10px;
-    margin-left: 27%;
-    }
-
-#bl img{
-    width: 100%;
-    height: 270px;
   
-}
-#bla input{
-    margin-top: 5px;
-}
-.black{
-    margin-top: 40px;
-    position: relative;
-    
-    font-weight: bolder;
-    width: 100%;
-    height: auto;
-   
   
-
-}
-.create{
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 20px
-    
-}
-
-.pr{
-    display: flex;
-
-}
-
-.testi{
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 10px 0;
-    color: black;
-}
-
-#show{
-    width: 40%;
-    padding: 0.5rem 1rem;
-    background-color: blueviolet;
-    color: #fff;
-    font-size: 1.1rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
-    margin-top: 70px;
-   
-}
-		
-.monie{
-    justify-content: center;
-    text-align: center;
-    color: black;
-}
-
-    .shit{
-        width: 90%;
-        margin-bottom: 20px;
-    }
-
-    .hey{
-        display: inline-block;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-left: 8%;
-        
-    }
-
-    .container{
-        width: 40%;
-        height: auto;
-        
-    }
-
-    .contact-box{
-        margin-left: 9%;
-    }
-
-    
-  
-    .donate {
-        margin-right: -30px;
-    }
-
-    .flex{
-        flex-wrap: wrap;
-        flex-direction: column;
-
-    }
-
-    .close{
-        font-size: 30px;
-        display: block;
-    }
-
-
-    
-    /*what we are doing  */
-    .display{
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
- 
-    header nav ul{
-        display: block;
-
-    }
-
-    #phone{
-        font-size: 30px;
-        cursor: pointer;
-        transition: all .6s;
-        
-        
-    }
-
-    .header h1{
-        margin-left: 80%;
-        margin-top: -5px;
-        font-size: 25px;
        
-
-    }
-    .bar{
-        text-align: center;
-        margin-left: -8%;
-        
-        
-    }
-
-    .open{
-        display: flex;
-        justify-content: center;
-    }
-
-    #phone i{
-        margin-top: 20px;
-       margin-left: -85%;
-       
-
-    }
-
-    .barre{
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        height: 100%;
-        width: 0px;
-        background-color: rgb(0, 0, 0);
-        z-index: 1;
-        padding-top: 130px;
-        overflow-x: hidden;
-        transition: all .5s;
-    }
-
-
-    .barre a{
-        padding: 35px;
-        text-decoration: none;
-        font-size: 20px;
-        color: rgb(255, 175, 175);
-        display: block;
-        
-    }
-
-    .temoignage{
-        flex-wrap: wrap;
-    }
-
-    .fun{
-        margin-top:200px;
-        width: 55%;
-        background-color: black;
-        height: auto;
-        margin-bottom:50px;
-        border-bottom: 1px wheat solid;
-        padding-left: 30px;
-        border-right: 1px wheat solid;
-        margin-right: 45px;
-    }
-
-    .gmaill p{
-        margin-left: -25%;
-        margin-top: 30px;
-    }
- 
-}
-
-/*delete-button-php*/
-#delete{
-    background-color: rgb(0, 0, 0);
-    border-top: 1px solid rgb(207, 207, 207);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: 50px;
-    
-
-
-}
-
-/*display-button-php*/
-.button-display{
-    justify-content: center;
-    width: 80%;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    margin-top: 40px;
-
-
-}
-.app{
-    margin-top: 75px;
-}
-#status{
-    width: 100%;
-    height: 50px;
-}
-#update-button {
-    width: 20%;
-    height: 50px;
-    margin-right: 20px;
-    border:1px solid whitesmoke;
-    background-color: black;
-    margin-left: 22%;
-}
-
-#display-button{
-    width: 20%;
-    height: 50px;
-    margin-right: 20px;
-    border:1px solid whitesmoke;
-}
-
-     
-.barre .close{
-        position: absolute;
-        top: 2px;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 32px;
-}
-
-  
-.social ul{
-           display: flex;
-           list-style: none;
-           justify-content: center;
-}
-
-.social{
-        text-align: center;
-       
-        font-size: 20px;
-}
-
-.helpline table{
-        margin: 50px;
-        text-align: center;
-        margin-left: 1%;
-}
-    
-    
-
-/* footer section styling */
-footer {
-    background: #111;
-    padding: 15px 23px;
-    color: #fff;
-    text-align: center;
-    
-    width: 100%;
-}
-
-footer span a {
-    color: rgb(255, 175, 175);
-    text-decoration: none;
-}
-
-
-footer span a:hover {
-        text-decoration: underline;
-}
-
-
-    /*g  */
-    .container{
-        position: relative;
-        width: 45%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 100px;
-        
-    }
-    
-    .container:after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background-size: cover;
-        filter: blur(50px);
-        z-index: -1;
-    }
-    .contact-box{
-        width: fit-content;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: #fff;
-        box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
-    }
-    
-    .left{
-        background: url("img/bg.jpg") no-repeat center;
-        background-size: cover;
-        height: 100%;
-    }
-    
-    .right{
-        padding: 25px 40px;
+  .barre .close{
+      position: absolute;
+      top: 4px;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 32px;
       
-    }
-
+  }
   
     
-    h2{
-        position: relative;
-        padding: 0 0 10px;
-        margin-bottom: 10px;
-    }
-    
-    h2:after{
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-        height: 4px;
-        width: 50px;
-        border-radius: 2px;
-        background-color: #2ecc71;
-    }
-    
-    .field{
-        width: 210%;
-        border: 2px solid rgba(0, 0, 0, 0);
-        outline: none;
-        background-color: rgba(230, 230, 230, 0.6);
-        padding: 0.5rem 1rem;
-        font-size: 1.1rem;
-        margin-bottom: 22px;
-        transition: .3s;
-    }
-    
-    .field:hover{
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-    
-    textarea{
-        min-height: 50px;
-    }
-    
-    #submit{
-        width: 100%;
-        padding: 0.5rem 1rem;
-        background-color: #2ecc71;
-        color: #fff;
-        font-size: 1.1rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        transition: .3s;
-    }
-    
-    .btn:hover{
-        background-color: #27ae60;
-    }
-    
-    .field:focus{
-        border: 2px solid rgba(30,85,250,0.47);
-        background-color: #fff;
-    }
-    
-    
-
-.hey{
-    color: black;
-    display: flex;
-    margin-left: -5%;
-}
-.shit{
-    width: 40%;
-    height: auto;
-    manrgin-top: 10px;
- 
-    margin-left: -3%;
-}
-
-.container{
-    margin-top: -5px;
-}
-
-.text{
-    font-size: 25px;
-}
-
-@media screen and (min-width:220px) and (max-width:1100px){
-
-     /*g  */
-     .container{
-        position: relative;
-        width: 240%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 20px;
-        margin-left: -5%;
-        
-    }
-    
-    .container:after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: url("img/bg.jpg") no-repeat center;
-        background-size: cover;
-        filter: blur(50px);
-        z-index: -1;
-    }
-    .contact-box{
-        width: 240%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: #fff;
-        box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
-    }
-    
   
-    .right{
-        padding: 25px 40px;
-      
-    }
-
-  
-    
-    h2{
-        position: relative;
-        padding: 0 0 10px;
-        margin-bottom: 10px;
-    }
-    
-    h2:after{
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-        height: 4px;
-        width: 50px;
-        border-radius: 2px;
-        background-color: #2ecc71;
-    }
-    
-    .field{
-        width: 220%;
-        border: 2px solid rgba(0, 0, 0, 0);
-        outline: none;
-        background-color: rgba(230, 230, 230, 0.6);
-        padding: 0.5rem 1rem;
-        font-size: 1.1rem;
-        margin-bottom: 22px;
-        transition: .3s;
-        justify-content: center;
-        
-        margin-left: -20px;
-    }
-    
-    .field:hover{
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-    
-    textarea{
-        min-height: 50px;
-    }
-    
-    .btn{
-        width: 100%;
-        padding: 0.5rem 1rem;
-        background-color: #2ecc71;
-        color: #fff;
-        font-size: 1.1rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        transition: .3s;
-    }
-    
-    .btn:hover{
-        background-color: #27ae60;
-    }
-    
-    .field:focus{
-        border: 2px solid rgba(30,85,250,0.47);
-        background-color: #fff;
-    }
-
-  
-
-}
-
-
-#blue{
-    background-color: blueviolet;
-    color: rgb(255, 255, 255);
-    height: 27px;
-    width: 16%;
-    padding-top: 10px;
-    padding-left: 10px;
-    font-size: 30px;
-    padding-bottom: 10px;
-    font-weight: normal;
-    text-align: center;
-   justify-content: center;
-   
-
-}
-
-#black{
-    background-color: blueviolet;
-    color: rgb(255, 255, 255);
-    height: 27px;
-    width: 16%;
-    padding-top: 10px;
-    padding-left: 10px;
-    font-size: 30px;
-    padding-bottom: 10px;
-    font-weight: normal;
-    text-align: center;
-   justify-content: center;
-   margin-left: -14%;
-
-}
-
-#yes{
-    margin-left: -14%;
-}
-.lorem{
-    font-size: px;
-    color: rgb(255, 255, 255);
-}
-.create{
-    color: rgb(255, 255, 255);
-    margin-top: -20px;
-    font-size: 15px;
-    background-color: rgb(8, 8, 8);
-   
-    
-}
-
-.blue img{
-    margin-top: 20px;
-    width: 400px;
-    height: 300px;
-    margin-left: -15%;
-}
-.blue{
-    
-    position: relative;
-   float: left;
-   margin: 30px;
-   justify-items: right;
-    font-weight: bolder;
-    width: 50%;
-    height: auto;
-    margin-left: 20%;
-    
-
-
-}
-
-#last {
-    font-size: 25px;
-    margin-top: -76px;
-    
-}
-
-.black{
-    margin-top: 70px;
-    position: relative;
-   float: left;
-   margin: 30px;
-    margin-top: 180px;
-    font-weight: bolder;
-    width: 50%;
-    height: auto;
-   margin-left: 2%;
-    padding-left: 5%;
-
-}
-.create{
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 20px
-    
-}
-
-.pr{
-    display: flex;
-
-}
-
-.testi{
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-
-    animation : hello 10s;
-    margin-top: 10px 0;
-    color: black;
-}
-
-#show{
-    width: 60%;
-    padding: 0.5rem 1rem;
-    background-color: blueviolet;
-    color: #fff;
-    font-size: 1.1rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
-    margin-top: 70px;
-   
-}
-		
-.monie{
-    justify-content: center;
-    text-align: center;
-    color: black;
-}
-
-footer{
-    position: sticky;
-    z-index: 99999;
-    overflow-y: hidden;
-}
